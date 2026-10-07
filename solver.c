@@ -339,12 +339,10 @@ int main(int argc, char **argv)
         puts("3674160 states; diameter 11");
         return output_failed();
     }
-    if (argc != 2 || !parse_state(argv[1], &state)) {
-        /* C99 5.1.2.2.1 lets argv[0] be null when argc is 0. */
-        fprintf(stderr, "usage: %s PPPPPPPOOOOOOO\n",
-                argc > 0 && argv[0] ? argv[0] : "solver");
-        return 2;
-    }
+    if (!parse_state("21345671111111", &state)) {
+    fputs("invalid fixed input\n", stderr);
+    return 2;
+}
     uint8_t *table = build_table(&diameter);
     if (!table) {
         fputs("could not build complete state table\n", stderr);
