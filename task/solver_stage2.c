@@ -1,4 +1,4 @@
-/* ida_solver.c - optimal 2x2x2 solver using IDA* instead of a full BFS table.
+/* solver_stage2.c - optimal 2x2x2 solver using IDA* instead of a full BFS table.
  *
  * Same model, input and output as the repository's solver.c:
  *     ./ida_solver 21345671111111      ->  an optimal move sequence
@@ -8,10 +8,10 @@
  * nothing at run time.
  *
  * One source, two builds:
- *   host:   cc -O2 -std=c99 ida_solver.c -o ida_solver
+ *   host:   cc -O2 -std=c99 solver_stage2.c -o solver_stage2
  *   RV32I:  riscv-none-elf-gcc -O2 -march=rv32i -mabi=ilp32 -ffreestanding \
  *               -nostdlib -fno-builtin -DTARGET -DSTATE=21345671111111 \
- *               -T ref.ld ida_solver.c -o ida_solver.elf
+ *               -T ref.ld solver_stage2.c -o solver_stage2.elf
  * The TARGET build reads INPUT at compile time, prints through Ripes ecalls
  * and exits with the solution length (0..11), 254 if the self-check fails,
  * or 255 for invalid input.
