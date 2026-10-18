@@ -1,18 +1,19 @@
-.globl _start
+.global _start
+.data
+.align 2
+buffer: .space 1048576   # 1 MiB guest memory allocation
+
 .text
 _start:
-    la   t0, buffer
-    li   t1, 4194304
-    li   t2, 0x55
-loop:
-    sb   t2, 0(t0)
-    addi t0, t0, 1
-    addi t1, t1, -1
-    bnez t1, loop
-    li   a7, 93
-    li   a0, 0
+    la s0, buffer        # Load base address of buffer
+    li s1, 1048576       # Buffer size in bytes
+    li s2, 0x5A          # Pattern byte to store
+write_loop:
+    sb s2, 0(s0)         # Store byte to guest address
+    addi s0, s0, 1       # Advance pointer by 1 byte
+    addi s1, s1, -1      # Decrement byte counter
+    bnez s1, write_loop  # Repeat until 1 MiB is populated
+
+    li a7, 93            # ecall exit
+    li a0, 0
     ecall
-.bss
-.align 4
-buffer:
-    .space 4194304

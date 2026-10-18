@@ -1,18 +1,11 @@
-.globl _start
+.global _start
 .text
 _start:
-    la   t0, buffer
-    li   t1, 1024
-    li   t2, 0x55
+    li s0, 1000000       # Loop counter: 1,000,000 iterations
 loop:
-    sb   t2, 0(t0)
-    addi t0, t0, 1
-    addi t1, t1, -1
-    bnez t1, loop
-    li   a7, 93
-    li   a0, 0
+    addi s0, s0, -1      # Decrement
+    bnez s0, loop        # Branch
+
+    li a7, 93            # ecall exit
+    li a0, 0
     ecall
-.bss
-.align 4
-buffer:
-    .space 1024
