@@ -166,24 +166,24 @@ once; otherwise a cubie would be missing or duplicated.
 
 The seven seats named by `P` are:
 
-| Position | Corner of the cube |
-| :---: | :--- |
-| 1 | front, upper, right |
-| 2 | front, down, right |
-| 3 | front, down, left |
-| 4 | back, upper, right |
-| 5 | back, down, right |
-| 6 | back, down, left |
-| 7 | back, upper, left |
+| Position | Corner of the cube  |
+| :------: | :------------------ |
+|    1    | front, upper, right |
+|    2    | front, down, right  |
+|    3    | front, down, left   |
+|    4    | back, upper, right  |
+|    5    | back, down, right   |
+|    6    | back, down, left    |
+|    7    | back, upper, left   |
 
 The second group, `O = 1111111`, describes the twist of the cubie in each of
 those same seven positions:
 
-| Digit | Meaning |
-| :---: | :--- |
-| 1 | not twisted |
-| 2 | twisted by +120° |
-| 3 | twisted by −120° |
+| Digit | Meaning            |
+| :---: | :----------------- |
+|   1   | not twisted        |
+|   2   | twisted by +120°  |
+|   3   | twisted by −120° |
 
 Here every orientation digit is `1`, so the two corners change places without
 being twisted. For a valid cube, convert orientation digits to `0`, `1`, and
@@ -200,21 +200,21 @@ B' R' D2 R' B R B' R D2 B R'
 Each token is one face turn. Apply them left to right; after the last one the
 cube is solved.
 
-| Token | Meaning |
-| :---: | :--- |
+| Token | Meaning                                |
+| :---: | :------------------------------------- |
 | `R` | turn the `RIGHT` face 90° clockwise |
-| `B` | turn the `BACK` face 90° clockwise |
-| `D` | turn the `DOWN` face 90° clockwise |
+| `B` | turn the `BACK` face 90° clockwise  |
+| `D` | turn the `DOWN` face 90° clockwise  |
 
 Clockwise means clockwise as seen by someone looking directly at that face from
 outside the cube, so you have to walk around to the back to read `B` and look up
 from underneath to read `D`. Two suffixes modify a turn:
 
-| Suffix | Meaning |
-| :---: | :--- |
-| none | 90° clockwise |
+| Suffix | Meaning                            |
+| :----: | :--------------------------------- |
+|  none  | 90° clockwise                     |
 | `'` | 90° counterclockwise, the inverse |
-| `2` | 180°, direction does not matter |
+| `2` | 180°, direction does not matter   |
 
 `R`, `B`, and `D` are the only faces that appear, because turning `UP`, `FRONT`,
 or `LEFT` would move the anchor at position `0`. A turn counts as one move
